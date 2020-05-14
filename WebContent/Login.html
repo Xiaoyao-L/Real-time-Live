@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>超级会互动/用户登录</title>
+<link Type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+<link Type="text/css" href="assets/style.css" rel="stylesheet">
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body
+	style="background: url(image/meeting1.jpg); background-size: cover">
+	<div class="inner-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-7 col-sm-7 col-xs-7">
+
+					<img alt="logo" src="image/logo.png" height="300px">
+				</div>
+				<div class="col-md-5 col-sm-5 col-xs-5">
+					<div class="form-top">
+						<h3>超级会互动</h3>
+					</div>
+					<div class="form-bottom">
+						<form role="form" action="loginServlet" method="post">
+							<div class="form-group">
+								<label class="sr-only" for="name">用户名/邮箱</label> <input
+									type="text" name="username" placeholder="请输入账号..."
+									class="form-control" id="username">
+							</div>
+							<div class="form-group">
+								<label class="sr-only" for="name">密码</label><input
+									type="password" name="password" placeholder="请输入密码..."
+									class="form-control" id="password">
+							</div>
+							<button type="submit" class="btn">登录</button>
+						</form>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--bottom-->
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container" align="center">
+			 <ul class="nav nav-tabs nav-tabs-justified">
+				<div class="row" align="center">
+                                <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+                                <li><b>产品介绍</b></li>
+                                <li><a href="system.html" target="_blank">会议系统</a></li>
+                                <li><a href="coop.html" target="_blank">合作平台</a></li>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+                                <li><b>技术支持</b></li>
+                                <li><a href="help.html" target="_blank">使用指南</a></li>
+                                <li><a href="question.html" target="_blank">常见问题</a></li>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+                                <li><b>关于我们</b></li>
+                                <li><a href="aboutus.html" target="_blank">关于我们</a></li>
+                                <li><a href="service.html" target="_blank">服务条款</a></li>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-3" align="center">
+                                <li><b>网站APP</b></li>
+                                <li><img  style="height:100px;width:100px" src="image/sign.png" />
+                                </div>
+                                
+                            </div>
+			  </ul>
+		</div>
+	</nav>
+</body>
+</html>

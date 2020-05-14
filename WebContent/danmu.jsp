@@ -1,0 +1,111 @@
+
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <%@ page import="java.io.*,java.util.*,com.imooc.bearlive.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>测试</title>
+        <script type="text/javascript" src="http://cdn-hangzhou.goeasy.io/goeasy.js"></script>
+        <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script src="js/jquery.i18n.properties.js"></script>
+    <script src="js/spin.min.js"></script>
+    <link Type="text/css" href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/bootstrap.js"></script>
+
+        <script>
+        var subscribed = false;
+        
+        
+        function subscriber() {
+            
+            var goeasy = new GoEasy({
+            appkey: 'BC-20eac56af04e4469b5b11215251f1e21',
+        });
+            goeasy.subscribe({
+                channel: "5",
+                onMessage: function (message) {
+                    
+                     youSelfBarrageMsg(message.content,'70%');
+                    
+                    
+                    
+                }
+            });
+        }
+
+        function publishMessage() {
+            var goeasy = new GoEasy({
+            appkey: 'BC-20eac56af04e4469b5b11215251f1e21',
+        });
+            var publishMessage = document.getElementById("danmuInput");
+            goeasy.publish({
+                channel: "5",
+                message: publishMessage.value
+            });
+            publishMessage.value = "";
+        }
+        var entityMap = {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': '&quot;',
+            "'": '&#39;',
+            "/": '&#x2F;'
+        };
+
+        function escapeHtml(string) {
+            return String(string).replace(/[&<>"'\/]/g, function (s) {
+                return entityMap[s];
+            });
+        }
+
+        function youSelfBarrageMsg(message, left) {
+           // alert('收到：自己'+message);
+            var colorText = getRandomColor();
+            var topPos = parseInt(Math.random() * ($("#danmuShow").outerHeight() - 20));
+            //此处给label加一个外层边框区别与其他
+            var newText = '<label style="position:absolute;font-size:30px; top:' + topPos + 'px;left:' + left + '; color:' + colorText + '">' + message + '</label>';
+            $("#danmuShow").append(newText);
+            var label = $("label:last");
+            label.stop().animate({left: '-50px'}, 9000, "linear", function () {
+                $(this).remove();
+            });
+        }
+
+        function getRandomColor() {
+            var colors = ["#a63", "#e45", "#000000"];
+            return colors[Math.floor(Math.random() * 3)];
+        }
+
+        function initBarrageMsg(message, left) {
+           // alert('收到：别人'+message);
+            var colorText = getRandomColor();
+            parseInt(Math.random() * ($("#danmuShow").outerHeight() - 20));
+            var newText = '<label style="position:absolute; top:' + topPos + 'px;left:' + left + '; color:' + colorText + '">' + message + '</label>';
+            $("#danmuShow").append(newText);
+            var label = $("label:last");
+            label.stop().animate({left: '-50px'}, 5000, "linear", function () {
+                $(this).remove();
+            });
+        }
+
+        function build() {
+            
+            subscriber();
+            $("#danmuButton").bind("click",function(){
+               publishMessage();
+                
+                
+                });
+        };
+            </script>
+            </head>
+            <body onload="build()">
+            
+                <div id="danmuShow" style="height: 700px;background:#eee">
+                   
+                </div>
+            </body>
+</html>
